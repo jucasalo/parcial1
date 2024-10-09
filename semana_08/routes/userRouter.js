@@ -29,4 +29,3 @@ router.delete('/:id', deleteRecipeById);
 // Búsqueda por nombre
 router.get('/search/:name', searchRecipeByName);
 
-module.exports = router;

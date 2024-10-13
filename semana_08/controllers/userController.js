@@ -1,4 +1,3 @@
-/* ---------------------------- Importamos el modelo --------------------------- */
 const User = require('../models/usersModels');
 
 const jwt = require('jsonwebtoken');
@@ -37,16 +36,18 @@ const login = async ( req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email});
+
         // Verificamos si el email existe
         if( !user){
             res.status(401).json({ msg: 'El email no existe', data: {} });
         }
-        // Verificamos si el password es valido
+
+        // Verificamos el password 
         const passwordOk = await bcrypt.compare(  password, user.password );
         if( !passwordOk){
             res.status(401).json({ msg: 'La contraseña es incorrecta', data: {} });
         }
-        // Si todo va bien, generamos el token
+        // generamos el token
         const data = {
             userId: user._id,
             name: user.name
@@ -54,7 +55,7 @@ const login = async ( req, res) => {
         const token = jwt.sign( data, secretKey, { expiresIn: '1h'} );
 
         console.log(token);
-        // Enviamos le token al cliente
+        //token al cliente
         res.status(200).json({ msg: 'success', data:{ jwt: token}});
 
     } catch (error) {

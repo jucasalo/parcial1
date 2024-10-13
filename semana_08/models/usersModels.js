@@ -1,7 +1,7 @@
-// importo Mongoose
+//Mongoose
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-// Creo el Esquema
+//Esquema
 const userSchema = new Schema({
     name: String,
     created: {

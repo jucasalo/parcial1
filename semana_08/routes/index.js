@@ -1,11 +1,12 @@
-/* ---------------------------- Importa las rutas --------------------------- */
 const userRouter = require('./userRouter');
-const taskRouter = require('./taskRouter');
+const ingredienteRouter = require('./ingredienteRouter');
+const recetaRouter = require('./recetaRouter');
 
 function routerAPI( app){
-    // Definimos los endPoints
+
     app.use('/api/users', userRouter);
-    app.use('/api/tasks', taskRouter);
+    app.use('/api/ingrediente', userRouter);
+    app.use('/api/receta', userRouter);
 }
 
 module.exports = routerAPI;

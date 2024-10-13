@@ -1,31 +1,26 @@
 const express = require('express');
 const router = express.Router();
 
-/* ------------------------- Importo el Controlador ------------------------- */
 const {
-  createRecipe, 
-  getRecipes, 
-  getRecipeById, 
-  deleteRecipeById, 
-  updateRecipeById, 
-  searchRecipeByName
-} = require('../controllers/recipeController');
+  creatUser, getUsers, getUsersById, deleteUserById, updateUserById, login
+} = require('../controllers/userController');
 
-// Retorna todas las recetas (con posibilidad de filtros)
-router.get('/', getRecipes);
+//devuelve todos los usuarios
+router.get('/', getUsers);
 
-// Crea una nueva receta
-router.post('/', createRecipe);
+// crea un nuevo usuario
+router.post('/', creatUser);
 
-// Obtener receta por ID
-router.get('/:id', getRecipeById);
+// obtener usuario por ID
+router.get('/:id', getUsersById);
 
-// Actualizamos una receta por ID
-router.put('/:id', updateRecipeById);
+// actualizamos un usuario por ID
+router.put('/:id', updateUserById);
 
-// Eliminamos una receta por ID
-router.delete('/:id', deleteRecipeById);
+// eliminamos un usuario por ID
+router.delete('/:id', deleteUserById);
 
-// Búsqueda por nombre
-router.get('/search/:name', searchRecipeByName);
+// iniciar sesión
+router.post('/login', login);
 
+module.exports = router;

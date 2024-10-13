@@ -4,62 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API de Recetas</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #4CAF50;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-    </style>
+
 </head>
 <body>
     <div class="container">
         <h1>Bienvenido a la API de Recetas</h1>
-        <p>Aquí puedes acceder a los diferentes endpoints disponibles:</p>
-        <ul>
-            <li><strong>Obtener todas las recetas:</strong> <a href="/recetas">GET /recetas</a></li>
-            <li><strong>Obtener una receta por ID:</strong> <a href="/recetas/1">GET /recetas/:id</a></li>
-            <li><strong>Crear una receta (requiere autenticación):</strong> POST /recetas</li>
-            <li><strong>Actualizar una receta por ID (requiere autenticación):</strong> PUT /recetas/:id</li>
-            <li><strong>Eliminar una receta por ID (requiere autenticación):</strong> DELETE /recetas/:id</li>
-            <li><strong>Filtrar por categoría:</strong> <a href="/recetas?categoria=postre">GET /recetas?categoria=postre</a></li>
-            <li><strong>Filtrar por dificultad:</strong> <a href="/recetas?dificultad=baja">GET /recetas?dificultad=baja</a></li>
-            <li><strong>Búsqueda por nombre:</strong> <a href="/recetas?nombre=Tarta">GET /recetas?nombre=Tarta</a></li>
-        </ul>
-        <p>Consulta la documentación completa en el repositorio de GitHub.</p>
-    </div>
-</body>
+        <p>La API de Recetas te permite interactuar con una base de datos de recetas de manera sencilla y eficiente. Podrás acceder a información detallada sobre distintas recetas, crear nuevas, actualizar las existentes y filtrar por diversos criterios como categoría o dificultad. Además, la API permite gestionar usuarios, desde su registro hasta la consulta de sus datos. Cada endpoint ha sido diseñado para ofrecer la máxima funcionalidad, facilitando la integración en cualquier aplicación que necesite manejar recetas de cocina o usuarios relacionados.</p>
 
-    <footer class="bg-gray-800 text-white py-6">
-        <div class="container mx-auto text-center">
-          <p class="text-lg">Proyecto realizado por Julieta Casaló y Florencia Falcone</p>
-          <p class="text-md">Estudiantes de Diseño y Programación Web - 2do Año, Cuarto Cuatrimestre, Comisión A</p>
-          <p class="text-md">Docente: Jonathan Cruz</p>
-          <p class="text-sm mt-4">© 2024 - Todos los derechos reservados</p>
+        <p style="text-align: center;">Aquí puedes acceder a los diferentes endpoints disponibles:</p>
+        <div class="columns">
+            <div class="column">
+                <h2>Usuarios</h2>
+                <ul>
+                    <li><strong>Ver todos los usuarios:</strong> <a href="http://localhost:3000/api/users">GET /usuarios</a></li>
+                    <li><strong>Registrar usuario:</strong> <a href="http://localhost:3000/api/users">POST /usuarios</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h2>Recetas</h2>
+                <ul>
+                    <li><strong>Obtener todas las recetas:</strong> <a href="http://localhost:3000/api/receta">GET /recetas</a></li>
+                    <li><strong>Obtener una receta por ID:</strong> <a href="http://localhost:3000/api/receta/:id">GET /recetas/:id</a></li>
+                    <li><strong>Crear una receta (requiere autenticación):</strong> POST /recetas</li>
+                    <li><strong>Actualizar una receta por ID (requiere autenticación):</strong> PUT /recetas/:id</li>
+                    <li><strong>Eliminar una receta por ID (requiere autenticación):</strong> DELETE /recetas/:id</li>
+                </ul>
+            </div>
+            <div class="column">
+                <h2>Ingredientes</h2>
+                <ul>
+                    <li><strong>Filtrar por categoría:</strong> <a href="http://localhost:3000/api/receta?categoria=postre">GET /recetas?categoria=postre</a></li>
+                    <li><strong>Filtrar por dificultad:</strong> <a href="http://localhost:3000/api/receta?dificultad=baja">GET /recetas?dificultad=baja</a></li>
+                    <li><strong>Búsqueda por nombre:</strong> <a href="http://localhost:3000/api/receta?nombre=Tarta">GET /recetas?nombre=Tarta</a></li>
+                </ul>
+            </div>
         </div>
-      </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </div>
+
+    <footer>
+        <p class="text-lg">Proyecto realizado por Julieta Casaló y Florencia Falcone</p>
+        <p class="text-md">Estudiantes de Diseño y Programación Web - 2do Año, Cuarto Cuatrimestre, Comisión A</p>
+        <p class="text-md">Docente: Jonathan Cruz</p>
+        <p class="text-sm mt-4">© 2024 - Todos los derechos reservados</p>
+    </footer>
 </body>
 </html>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        color: #4CAF50;
+        text-align: center;
+        font-size: 36px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        background-color: white;
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    .columns {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .column {
+        width: 30%;
+    }
+    h2 {
+        color: #4CAF50;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+    a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    a:hover {
+        text-decoration: underline;
+    }
+    footer {
+        background-color: #333;
+        color: #ffffff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
+        margin-top: 50px;
+    }
+    footer p {
+        margin: 5px 0;
+    }
+</style>

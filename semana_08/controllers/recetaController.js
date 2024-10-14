@@ -1,4 +1,5 @@
 const Receta = require('../models/recetaModel');
+const Ingrediente = require('../models/ingredienteModel');
 
 //todas las recetas
 const getAllRecetas = async (req, res) => {
@@ -103,9 +104,9 @@ const deleteReceta = async (req, res) => {
     }
 };
 
-// Buscar receta por nomb
-const searchReceta = async (req, res) => {
-    const { nombre } = req.query;
+// Buscar receta por nombre
+const nombreReceta = async (req, res) => {
+    const { nombre } = req.params; 
     try {
         const recetas = await Receta.find({ nombre: { $regex: nombre, $options: 'i' } });
         if (recetas.length) {
@@ -119,17 +120,39 @@ const searchReceta = async (req, res) => {
     }
 };
 
-// Filtrar recetas
-const filterRecetas = async (req, res) => {
-    const { categoria } = req.query;
+// Filtrar recetas por categoría
+const filtrarCategoria = async (req, res) => {
+    const { categoria } = req.params;  
     try {
         const recetas = await Receta.find({ categoria });
-        res.status(200).json({ msg: 'success', data: recetas });
+        if (recetas.length) {
+            res.status(200).json({ msg: 'success', data: recetas });
+        } else {
+            res.status(404).json({ msg: 'No se encontraron recetas para la categoría proporcionada', data: {} });
+        }
     } catch (error) {
         console.error(error);
         res.status(500).json({ msg: 'Error al filtrar las recetas', data: {} });
     }
 };
+
+// Filtrar recetas por tiempo de preparación exacto
+const filtrarTiempo = async (req, res) => {
+    const { tiempoPreparacion } = req.params;
+
+    try {
+        const recetas = await Receta.find({ tiempoPreparacion: Number(tiempoPreparacion) });
+        if (recetas.length) {
+            res.status(200).json({ msg: 'success', data: recetas });
+        } else {
+            res.status(404).json({ msg: 'No se encontraron recetas con el tiempo de preparación proporcionado', data: {} });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: 'Error al filtrar las recetas', data: {} });
+    }
+};
+
 
 module.exports = {
     getAllRecetas,
@@ -137,6 +160,7 @@ module.exports = {
     createReceta,
     updateReceta,
     deleteReceta,
-    searchReceta,
-    filterRecetas
+    nombreReceta,
+filtrarCategoria,
+filtrarTiempo
 };

@@ -6,8 +6,9 @@ const {
     createReceta,
     updateReceta,
     deleteReceta,
-    searchReceta,
-    filterRecetas
+    nombreReceta,
+filtrarCategoria,
+filtrarTiempo
 } = require('../controllers/recetaController');
 
 // obtener todas las recetas
@@ -26,9 +27,10 @@ router.put('/:id', updateReceta);
 router.delete('/:id', deleteReceta);
 
 // buscar recetas por nombre
-router.get('/buscar', searchReceta);
+router.get('/buscar/:nombre', nombreReceta);
 
 // filtrar recetas
-router.get('/filtro', filterRecetas);
+router.get('/filtro/categoria/:categoria', filtrarCategoria);
+router.get('/filtro/tiempo/:tiempoPreparacion', filtrarTiempo);
 
 module.exports = router;

@@ -8,7 +8,8 @@ const port = process.env.PORT;
 
 const app = express();
 // Ruta Raíz
-app.use( express.json());
+app.use(express.json());
+
 // Definimos la carpeta para servir archivos estaticos
 app.use(  express.static('public') );
 

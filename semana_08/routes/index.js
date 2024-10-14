@@ -5,8 +5,8 @@ const recetaRouter = require('./recetaRouter');
 function routerAPI( app){
 
     app.use('/api/users', userRouter);
-    app.use('/api/ingrediente', userRouter);
-    app.use('/api/receta', userRouter);
+    app.use('/api/ingrediente', ingredienteRouter);
+    app.use('/api/receta', recetaRouter);
 }
 
 module.exports = routerAPI;

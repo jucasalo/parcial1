@@ -29,14 +29,14 @@ const getIngredienteById = async (req, res) => {
 
 // Crear un nuevo ingrediente
 const createIngrediente = async (req, res) => {
-    const { nombre, cantidad, unidadMedida } = req.body;
+    const { nombre, cantidad, unidadMedida, tipo } = req.body;
 
     if (!nombre || !cantidad || !unidadMedida) {
         return res.status(400).json({ msg: 'Faltan parámetros obligatorios', data: { nombre, cantidad, unidadMedida } });
     }
 
     try {
-        const nuevoIngrediente = new Ingrediente({ nombre, cantidad, unidadMedida });
+        const nuevoIngrediente = new Ingrediente({ nombre, cantidad, unidadMedida, tipo });
         await nuevoIngrediente.save();
         res.status(201).json({ msg: 'Ingrediente creado', data: nuevoIngrediente });
     } catch (error) {
@@ -44,6 +44,10 @@ const createIngrediente = async (req, res) => {
         res.status(500).json({ msg: 'Error al crear el ingrediente', data: {} });
     }
 };
+
+
+
+
 
 // Actualizar un ingrediente
 const updateIngrediente = async (req, res) => {
